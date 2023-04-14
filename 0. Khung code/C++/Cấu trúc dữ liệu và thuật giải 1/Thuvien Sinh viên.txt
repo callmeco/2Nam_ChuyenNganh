@@ -1,0 +1,660 @@
+#define MAX 100
+
+struct SinhVien
+{
+	char maSV[8];
+	char hoSV[10];
+	char tenLot[10];
+	char ten[10];
+	char lop[6];
+	int namSinh;
+	double dtb;
+	int tichLuy;
+};
+
+int TapTin_MangCT(char *filename, SinhVien a[MAX], int &n)
+{
+	ifstream in(filename);
+	if (!in)
+		return 0;
+	char maSV[8];
+	char hoSV[10];
+	char tenLot[10];
+	char ten[10];
+	char lop[6];
+	int namSinh;
+	double dtb;
+	int tichLuy;
+	n = 0;
+	in >> maSV; strcpy_s(a[n].maSV, maSV);
+	in >> hoSV; strcpy_s(a[n].hoSV, hoSV);
+	in >> tenLot; strcpy_s(a[n].tenLot, tenLot);
+	in >> ten; strcpy_s(a[n].ten, ten);
+	in >> lop; strcpy_s(a[n].lop, lop);
+	in >> namSinh; a[n].namSinh = namSinh;
+	in >> dtb; a[n].dtb = dtb;
+	in >> tichLuy; a[n].tichLuy = tichLuy;
+	while (!in.eof())
+	{
+		n++;
+		in >> maSV; strcpy_s(a[n].maSV, maSV);
+		in >> hoSV; strcpy_s(a[n].hoSV, hoSV);
+		in >> tenLot; strcpy_s(a[n].tenLot, tenLot);
+		in >> ten; strcpy_s(a[n].ten, ten);
+		in >> lop; strcpy_s(a[n].lop, lop);
+		in >> namSinh; a[n].namSinh = namSinh;
+		in >> dtb; a[n].dtb = dtb;
+		in >> tichLuy; a[n].tichLuy = tichLuy;
+	} n++;
+	in.close();
+	return 1;
+}
+
+void TieuDe()
+{
+	int i;
+	cout << "\n";
+	cout << ':';
+	for (i = 1; i <= 74; i++)
+		cout << '=';
+	cout << ':';
+	cout << "\n";
+	cout << setiosflags(ios::left);
+	cout << ':';
+	cout << setw(9) << "Ma SV"
+		<< ':'
+		<< setw(30) << " Ho va Ten sinh vien"
+		<< ':'
+		<< setw(10) << "Lop"
+		<< ':'
+		<< setw(6) << "NS"
+		<< ':'
+		<< setw(6) << "DTB"
+		<< ':'
+		<< setw(8) << "TichLuy"
+		<< ':';
+	cout << "\n";
+	cout << ':';
+	for (i = 1; i <= 74; i++)
+		cout << '=';
+	cout << ':';
+	cout << "\n";
+}
+
+void Xuat_SV(SinhVien p)
+{
+	cout << ':';
+	cout << setiosflags(ios::left)
+		<< setw(9) << p.maSV
+		<< ':'
+		<< setw(10) << p.hoSV
+		<< setw(10) << p.tenLot
+		<< setw(10) << p.ten
+		<< ':'
+		<< setw(10) << p.lop
+		<< ':'
+		<< setw(6) << p.namSinh
+		<< ':'
+		<< setw(6) << setprecision(2) << p.dtb
+		<< ':'
+		<< setw(8) << p.tichLuy
+		<< ':';
+}
+
+void XuatKeDoi()
+{
+	cout << ':';
+	for (int i = 1; i <= 74; i++)
+		cout << '=';
+	cout << ':';
+	cout << endl;
+}
+
+void Xuat_DSSV(SinhVien a[MAX], int n)
+{
+	int i;
+	TieuDe();
+	for (i = 0; i < n; i++)
+	{
+		Xuat_SV(a[i]);
+		cout << '\n';
+	}
+	XuatKeDoi();
+}
+
+int Tim_MaSo_DauTien(char maSV[10], SinhVien a[MAX], int n)
+{
+	int i = 0;
+	while ((i < n) && (_stricmp(a[i].maSV, maSV)))
+		i++;
+	if (i == n)
+		return -1;
+	return i;
+}
+
+void Tim_TheoTen(char ten[10], SinhVien a[MAX], int n)
+{
+	int i, kq = -1;
+	for (i = 0; i < n; i++)
+		if (_stricmp(a[i].ten, ten) == 0)
+		{
+			kq = 1;
+			break;
+		}
+	if (kq == -1)
+		cout << "\nDanh sach khong co ten sinh vien : " << ten;
+	else
+	{
+		cout << "\nThong tin sinh vien trong danh sach co ten : " << ten << endl;
+		TieuDe();
+		for (i = 0; i < n; i++)
+			if (_stricmp(a[i].ten, ten) == 0)
+			{
+				Xuat_SV(a[i]);
+				cout << endl;
+			}
+		XuatKeDoi();
+	}
+}
+
+void Tim_TheoHo(char hoSV[10], SinhVien a[MAX], int n)
+{
+	int i, kq = -1;
+	for (i = 0; i < n; i++)
+		if (_stricmp(a[i].hoSV, hoSV) == 0)
+		{
+			kq = 1;
+			break;
+		}
+	if (kq == -1)
+		cout << "\nDanh sach khong co sinh vien mang ho : " << hoSV;
+	else
+	{
+		cout << "\nCac sinh vien trong danh sach mang ho : " << hoSV << endl;
+		TieuDe();
+		for (i = 0; i < n; i++)
+			if (_stricmp(a[i].hoSV, hoSV) == 0)
+			{
+				Xuat_SV(a[i]);
+				cout << endl;
+			}
+		XuatKeDoi();
+	}
+}
+
+void Tim_TheoDTB(double dtb, SinhVien a[MAX], int n)
+{
+	int i, kq = -1;
+	for (i = 0; i < n; i++)
+	{
+		if (a[i].dtb >= dtb)
+		{
+			kq = 1;
+			break;
+		}
+	}
+	if (kq == -1)
+		cout << "\nDanh sach khong co sinh vien co diem trung binh >= : " << dtb;
+	else
+	{
+		cout << "\nCac sinh vien trong danh sach co diem trung binh >= : " << dtb << endl;
+		TieuDe();
+		for (i = 0; i < n; i++)
+			if (a[i].dtb >= dtb)
+			{
+				Xuat_SV(a[i]);
+				cout << endl;
+			}
+		XuatKeDoi();
+	}
+}
+
+void Tim_TheoLop(char lop[6], SinhVien a[MAX], int n)
+{
+	int i, kq = -1;
+	for (i = 0; i < n; i++)
+		if (_stricmp(a[i].lop, lop) == 0)
+		{
+			kq = 1;
+			break;
+		}
+	if (kq == -1)
+		cout << "\nDanh sach khong co sinh vien mang lop : " << lop;
+	else
+	{
+		cout << "\nCac sinh vien trong danh sach mang lop : " << lop << endl;
+		TieuDe();
+		for (i = 0; i < n; i++)
+			if (_stricmp(a[i].lop, lop) == 0)
+			{
+				Xuat_SV(a[i]);
+				cout << endl;
+			}
+		XuatKeDoi();
+	}
+}
+
+int KiemTraDayTang(int x[MAX], int n)
+{
+	int i, kq = 1;
+	for (i = 0; i < n - 1; i++)
+		if (x[i]>x[i + 1])
+		{
+			kq = 0;
+			break;
+		}
+	return kq;
+}
+
+int KiemTraDayGiam(int x[MAX], int n)
+{
+	int i, kq = 1;
+	for (i = 0; i < n - 1; i++)
+		if (x[i] < x[i + 1])
+		{
+			kq = 0;
+			break;
+		}
+	return kq;
+}
+
+int TKNP_Tang(int x[MAX], int n, int tichLuy)
+{
+	int kq = -1, midle, left = 0, right = n - 1;
+	do
+	{
+		midle = (left + right) / 2;
+		if (tichLuy == x[midle])
+		{
+			kq = midle;
+			break;
+		}
+		else
+		if (tichLuy < x[midle])
+			right = midle - 1;
+		else
+			left = midle + 1;
+	} while (left <= right);
+	return kq;
+}
+
+int TKNP_Giam(int x[MAX], int n, int tichLuy)
+{
+	int kq = -1, middle, left = 0, right = n - 1;
+	do
+	{
+		middle = (left + right) / 2;
+		if (tichLuy == x[middle])
+		{
+			kq = middle;
+			break;
+		}
+		else
+		if (tichLuy < x[middle])
+			left = middle + 1;
+		else
+			right = middle - 1;
+	} while (left <= right);
+	return kq;
+}
+
+void Xuat_TKNP_Theo_TichLuy(int tichLuy, SinhVien a[MAX], int n, int kq)
+{
+	if (kq == -1)
+	{
+		cout << "\nKhong co sinh vien trong danh sach co so TC tich luy = " << tichLuy << " :\n";
+		return;
+	}
+	else
+	{
+		cout << "\nThong tin sinh vien trong danh sach co so TC tich luy = " << tichLuy << " :\n";
+		TieuDe();
+		Xuat_SV(a[kq]);
+		cout << endl;
+		XuatKeDoi();
+		return;
+	}
+}
+
+void TKNP_Theo_TichLuy(SinhVien a[MAX], int n)
+{
+	int i, kq;
+	int x[MAX];
+	for (i = 0; i < n; i++)
+		x[i] = a[i].tichLuy;
+	if (!KiemTraDayGiam(x, n) && !KiemTraDayTang(x, n))
+	{
+		cout << "\nDay so nguyen tao boi truong tich luy khong don dieu";
+		cout << "\nKhong su dung duoc thuat giai tim kiem nhi phan!\n";
+		return;
+	}
+	int tichLuy;
+	cout << "\nNhap so tich luy : ";
+	cin >> tichLuy;
+	if (KiemTraDayTang(x, n))
+	{
+		kq = TKNP_Tang(x, n, tichLuy);
+		Xuat_TKNP_Theo_TichLuy(tichLuy, a, n, kq);
+	}
+	if (KiemTraDayGiam(x, n))
+	{
+		kq = TKNP_Giam(x, n, tichLuy);
+		Xuat_TKNP_Theo_TichLuy(tichLuy, a, n, kq);
+	}
+}
+
+
+Các thuật toán sắp xếp theo điểm trung bình
+void Copy(SinhVien b[MAX], SinhVien a[MAX], int n)
+{
+	for (int i = 0; i < n; i++)
+		b[i] = a[i];
+}
+
+void Partition(SinhVien a[MAX], int l, int r)
+{
+	int i, j;
+	SinhVien x;
+	x = a[(l + r) / 2];
+	i = l;
+	j = r;
+	do
+	{
+		while (a[i].dtb < x.dtb)
+			i++;
+		while (a[j].dtb > x.dtb)
+			j--;
+		if (i<=j)
+		{
+			swap(a[i], a[j]);
+			i++; j--;
+		}
+	} while (i<=j);
+	if (l < j)
+		Partition(a, l, j);
+	if (i < r)
+		Partition(a, i, r);
+}
+
+void QuickSort(SinhVien a[MAX], int n)
+{
+	Partition(a, 0, n - 1);
+}
+
+void Shift(SinhVien a[MAX], int l, int r)
+{
+	int i, j;
+	SinhVien x;
+	i = l; j = 2 * i + 1;
+	x = a[i];
+	while (j <= r)
+	{
+		if (j < r)
+			if (a[j].dtb < a[j + 1].dtb)
+				j = j + 1;
+		if (a[j].dtb <= x.dtb)
+			return;
+		else
+		{
+			a[i] = a[j];
+			i = j;
+			j = 2 * i + 1;
+			a[i] = x;
+		}
+	}
+}
+
+
+void Create_Heap(SinhVien a[MAX], int n)
+{
+	int l;
+	l = (n - 1) / 2;
+	while (l >= 0)
+	{
+		Shift(a, l, n - 1);
+		l = l - 1;
+	}
+}
+
+void HeapSort(SinhVien a[MAX], int n)
+{
+
+	int r, i = 0;
+	Create_Heap(a, n);
+	r = n - 1;
+	while (r > 0)
+	{
+		i++;
+		swap(a[0], a[r]);
+		r = r - 1;
+		Shift(a, 0, r);
+	}
+}
+
+void Distribution(SinhVien f[MAX], int n, SinhVien f1[MAX], int &h1, SinhVien f2[MAX], int &h2, int p)
+{
+	int i, k = 1, l = 0;
+	h1 = 0; h2 = 0;
+	do
+	{
+		i = 1;
+		while (i <= p && l < n)
+		{
+			if (k == 1)
+				f1[h1++] = f[l];
+			else
+				f2[h2++] = f[l];
+			i++;
+			l++;
+		}
+		k = 3 - k;
+	} while (l < n);
+}
+
+void Merge(SinhVien f1[MAX], int h1, SinhVien f2[MAX], int h2, SinhVien f[MAX], int p)
+{
+	int i1 = 0, i2 = 0, r1, r2, h = 0;
+	while (i1 < h1 && i2 < h2)
+	{
+		r1 = r2 = 1;
+		while ((r1 <= p)  &&  (r2 <= p)  &&  i1 < h1 && i2 < h2)
+		{
+			if (f1[i1].dtb <= f2[i2].dtb)
+			{
+				f[h++] = f1[i1];
+				r1++;
+				i1++;
+			}
+			else
+			{
+				f[h++] = f2[i2];
+				r2++;
+				i2++;
+			}
+		}
+		while (i1 < h1  &&  r1 <= p)
+		{
+			f[h++] = f1[i1];
+			i1++; r1++;
+		}
+		while (i2 < h2  &&  r2 <= p)
+		{
+			f[h++] = f2[i2];
+			i2++; r2++;
+		}
+	}
+	while (i1 < h1)
+	{
+		f[h++] = f1[i1];
+		i1++;
+	}
+	while (i2 < h2)
+	{
+		f[h++] = f2[i2];
+		i2++;
+	}
+}
+
+void MergeSort(SinhVien a[MAX], int n)
+{
+	int p = 1, h1, h2, i = 1;
+	SinhVien a1[MAX], a2[MAX];
+	while (p < n)
+	{
+		Distribution(a, n, a1, h1, a2, h2, p);
+		Merge(a1, h1, a2, h2, a, p);
+		i++;
+		p = p * 2;
+	}
+}
+
+void SelectionSort(NhanVien a[MAX], int n)
+{
+	int cs_min, i, j;
+	for (i = 0; i < n; i++)
+	{
+		cs_min = i;
+		for (j = i + 1; j < n; j++)
+			if (_strcmpi(a[cs_min].MaNV, a[j].MaNV)>0)
+				cs_min = j;
+		swap(a[cs_min], a[i]);
+	}
+}
+
+void InsertionSort(NhanVien a[MAX], int n)
+{
+	int i, pos;
+	char x[15];
+	for (i = 1; i < n; i++)
+	{
+		strcpy_s(x, a[i].diaChi);
+		for (pos = i - 1; (pos >= 0) && (_strcmpi(a[pos].diaChi, x)>0); pos--)
+			a[pos + 1] = a[pos];
+		strcpy_s(a[pos + 1].diaChi, x);
+	}
+}
+
+void Radix(NhanVien a[MAX], int n)
+{
+	int max = a[0].namSinh, m = 0, k = 0, i, j, du, thuong;
+	int b0[MAX], b1[MAX], b2[MAX], b3[MAX], b4[MAX], b5[MAX], b6[MAX], b7[MAX], b8[MAX], b9[MAX];
+	int p0, p1, p2, p3, p4, p5, p6, p7, p8, p9;
+	for (i = 0; i < n; i++)
+		if (a[i].namSinh>max)
+			max = a[i].namSinh;
+	while (max != 0)
+	{
+		max = max / 10;
+		m++;
+	}
+	while (k < m)
+	{
+		p0 = p1 = p2 = p3 = p4 = p5 = p6 = p7 = p8 = p9 = 0;
+		for (i = 0; i < n; i++)
+		{
+			thuong = a[i].namSinh;
+			for (j = 0; j <= k; j++)
+			{
+				du = thuong % 10;
+				thuong = thuong / 10;
+			}
+			switch (du)
+			{
+			case 0:
+				b0[p0++] = a[i].namSinh;
+				break;
+			case 1:
+				b1[p1++] = a[i].namSinh;
+				break;
+			case 2:
+				b2[p2++] = a[i].namSinh;
+				break;
+			case 3:
+				b3[p3++] = a[i].namSinh;
+				break;
+			case 4:
+				b4[p4++] = a[i].namSinh;
+				break;
+			case 5:
+				b5[p5++] = a[i].namSinh;
+				break;
+			case 6:
+				b6[p6++] = a[i].namSinh;
+				break;
+			case 7:
+				b7[p7++] = a[i].namSinh;
+				break;
+			case 8:
+				b8[p8++] = a[i].namSinh;
+				break;
+			case 9:
+				b9[p9++] = a[i].namSinh;
+				break;
+			}
+		}
+		j = 0;
+		for (i = 0; i < p0; i++)
+			a[j++].namSinh = b0[i];
+		for (i = 0; i < p1; i++)
+			a[j++].namSinh = b1[i];
+		for (i = 0; i < p2; i++)
+			a[j++].namSinh = b2[i];
+		for (i = 0; i < p3; i++)
+			a[j++].namSinh = b3[i];
+		for (i = 0; i < p4; i++)
+			a[j++].namSinh = b4[i];
+		for (i = 0; i < p5; i++)
+			a[j++].namSinh = b5[i];
+		for (i = 0; i < p6; i++)
+			a[j++].namSinh = b6[i];
+		for (i = 0; i < p7; i++)
+			a[j++].namSinh = b7[i];
+		for (i = 0; i < p8; i++)
+			a[j++].namSinh = b8[i];
+		for (i = 0; i < p9; i++)
+			a[j++].namSinh = b9[i];
+		k++;
+	}
+}
+
+void QuickSort(NhanVien a[MAX], int l, int r)
+{
+	int i, j;
+	double x;
+	x = a[(l + r) / 2].luong;
+	i = l; j = r;
+	do
+	{
+		while (a[i].luong<x)
+			i++;
+		while (a[j].luong>x)
+			j--;
+		if (i <= j)
+		{
+			swap(a[i], a[j]);
+			i++;
+			j--;
+		}
+	} while (i <= j);
+	if (l < j)
+		QuickSort(a, l, j);
+	if (i < r)
+		QuickSort(a, i, r);
+	for (int m = 0; m <= r; m++)
+	for (int n = m + 1; n<r; n++)
+	if (a[m].luong == a[n].luong)
+	{
+		if (_strcmpi(a[m].ten, a[n].ten) > 0)
+			swap(a[m], a[n]);
+		else if (_strcmpi(a[m].ten, a[n].ten) == 0)
+		{
+			if (_strcmpi(a[m].ho, a[n].ho) > 0)
+				swap(a[m], a[n]);
+			else if (_strcmpi(a[m].ho, a[n].ho) == 0)
+			{
+				if (a[m].namSinh > a[n].namSinh)
+					swap(a[m], a[n]);
+			}
+		}
+	}
+}
