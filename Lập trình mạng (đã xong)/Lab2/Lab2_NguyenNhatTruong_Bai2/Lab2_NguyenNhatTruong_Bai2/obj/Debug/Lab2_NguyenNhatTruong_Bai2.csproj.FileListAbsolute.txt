@@ -1,0 +1,7 @@
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab2\Lab2_NguyenNhatTruong_Bai2\Lab2_NguyenNhatTruong_Bai2\bin\Debug\Lab2_NguyenNhatTruong_Bai2.exe.config
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab2\Lab2_NguyenNhatTruong_Bai2\Lab2_NguyenNhatTruong_Bai2\bin\Debug\Lab2_NguyenNhatTruong_Bai2.exe
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab2\Lab2_NguyenNhatTruong_Bai2\Lab2_NguyenNhatTruong_Bai2\bin\Debug\Lab2_NguyenNhatTruong_Bai2.pdb
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab2\Lab2_NguyenNhatTruong_Bai2\Lab2_NguyenNhatTruong_Bai2\obj\Debug\Lab2_NguyenNhatTruong_Bai2.csproj.AssemblyReference.cache
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab2\Lab2_NguyenNhatTruong_Bai2\Lab2_NguyenNhatTruong_Bai2\obj\Debug\Lab2_NguyenNhatTruong_Bai2.csproj.CoreCompileInputs.cache
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab2\Lab2_NguyenNhatTruong_Bai2\Lab2_NguyenNhatTruong_Bai2\obj\Debug\Lab2_NguyenNhatTruong_Bai2.exe
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab2\Lab2_NguyenNhatTruong_Bai2\Lab2_NguyenNhatTruong_Bai2\obj\Debug\Lab2_NguyenNhatTruong_Bai2.pdb
