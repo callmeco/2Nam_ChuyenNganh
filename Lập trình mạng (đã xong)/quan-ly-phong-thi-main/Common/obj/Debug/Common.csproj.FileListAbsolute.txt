@@ -1,8 +1,0 @@
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\bin\Debug\Common.dll
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\bin\Debug\Common.pdb
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\bin\Debug\Tulpep.NotificationWindow.dll
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\obj\Debug\Common.csproj.AssemblyReference.cache
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\obj\Debug\Common.csproj.CopyComplete
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\obj\Debug\Common.dll
-C:\Users\LENOVO\Downloads\quan-ly-phong-thi-main\Common\obj\Debug\Common.pdb
