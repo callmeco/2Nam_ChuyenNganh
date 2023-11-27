@@ -1,0 +1,8 @@
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\bin\Debug\TCP_client.exe.config
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\bin\Debug\TCP_client.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\bin\Debug\TCP_client.pdb
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\obj\Debug\TCP_client.csproj.AssemblyReference.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\obj\Debug\TCP_client.csproj.SuggestedBindingRedirects.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\obj\Debug\TCP_client.csproj.CoreCompileInputs.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\obj\Debug\TCP_client.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\TCP_client\obj\Debug\TCP_client.pdb

@@ -1,0 +1,8 @@
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\bin\Debug\UDP_server.exe.config
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\bin\Debug\UDP_server.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\bin\Debug\UDP_server.pdb
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\obj\Debug\UDP_server.csproj.AssemblyReference.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\obj\Debug\UDP_server.csproj.SuggestedBindingRedirects.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\obj\Debug\UDP_server.csproj.CoreCompileInputs.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\obj\Debug\UDP_server.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_server\obj\Debug\UDP_server.pdb

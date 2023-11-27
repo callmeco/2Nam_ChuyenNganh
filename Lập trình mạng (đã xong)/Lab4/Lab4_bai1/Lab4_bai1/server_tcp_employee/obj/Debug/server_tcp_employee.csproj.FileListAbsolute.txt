@@ -1,0 +1,22 @@
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.csproj.AssemblyReference.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.csproj.SuggestedBindingRedirects.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.csproj.CoreCompileInputs.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.exe.config
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.pdb
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.pdb
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.exe.config
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.exe
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.pdb
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.exe
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.pdb
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab4\Lab4_bai1\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.exe.config
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab4\Lab4_bai1\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.exe
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab4\Lab4_bai1\Lab4_bai1\server_tcp_employee\bin\Debug\server_tcp_employee.pdb
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab4\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.csproj.AssemblyReference.cache
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab4\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.csproj.CoreCompileInputs.cache
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab4\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.exe
+D:\Đại Học Học Cũng Nhàn ;-;\Lập trình mạng\Lab4\Lab4_bai1\Lab4_bai1\server_tcp_employee\obj\Debug\server_tcp_employee.pdb

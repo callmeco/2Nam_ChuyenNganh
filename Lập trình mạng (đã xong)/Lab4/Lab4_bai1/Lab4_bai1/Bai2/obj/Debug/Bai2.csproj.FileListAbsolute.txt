@@ -1,0 +1,15 @@
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\bin\Debug\Bai2.exe.config
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\bin\Debug\Bai2.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\bin\Debug\Bai2.pdb
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\obj\Debug\Bai2.csproj.AssemblyReference.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\obj\Debug\Bai2.csproj.SuggestedBindingRedirects.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\obj\Debug\Bai2.csproj.CoreCompileInputs.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\obj\Debug\Bai2.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\Bai2\obj\Debug\Bai2.pdb
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\Bai2\bin\Debug\Bai2.exe.config
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\Bai2\bin\Debug\Bai2.exe
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\Bai2\bin\Debug\Bai2.pdb
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\Bai2\obj\Debug\Bai2.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\Bai2\obj\Debug\Bai2.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\Bai2\obj\Debug\Bai2.exe
+C:\Users\LENOVO\Downloads\Lab4_bai1\Lab4_bai1\Bai2\obj\Debug\Bai2.pdb

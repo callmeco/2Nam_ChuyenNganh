@@ -1,0 +1,8 @@
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\bin\Debug\UDP_client.exe.config
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\bin\Debug\UDP_client.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\bin\Debug\UDP_client.pdb
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\obj\Debug\UDP_client.csproj.AssemblyReference.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\obj\Debug\UDP_client.csproj.SuggestedBindingRedirects.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\obj\Debug\UDP_client.csproj.CoreCompileInputs.cache
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\obj\Debug\UDP_client.exe
+D:\HocTap\LapTrinhMang\Lab4_bai1\UDP_client\obj\Debug\UDP_client.pdb
