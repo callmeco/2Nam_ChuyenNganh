@@ -1,0 +1,5 @@
+clock timezone CST -7
+ntp server 10.0.254.253
+ntp authentication-key 1 md5 cisco
+ntp trusted-key 1
+ntp server 10.0.254.253  key  1

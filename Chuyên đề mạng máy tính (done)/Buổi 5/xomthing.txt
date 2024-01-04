@@ -1,0 +1,39 @@
+///////////////////////////////////////
+command prom
+ssh -l chuyende 10.0.0.1
+ena
+show cdp neighber detail
+///////////////////
+router rip
+redistribute static                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ///////////////////////////////////////
+tường lửa
+ACL (standard, extended)
+standard (1-99) cấm, cho phép packet đi qua router (IP nguồn)
+extended (100-199) cấm, cho phép packet đi qua router, TCP/UDP, HTTP...
+
+wildcard mask: ngược lại với subnet mask (255.255.255.0 -> 0.0.0.255)
+------------------
+255.255.255.255 trừ 255.255.255.0 = 0.0.0.255
+------------------                                    
+PC01: 192.168.1.254
+access-list deny host 192.168.1.254 (cấm PC1)
+access-list deny 192.168.1.0 0.0.0.255 (cấm cả mạng của PC1)
+*mặc định access-list là cấm
+
+access-list 100 permit (tcp/udp) host 192.168.1.254 any eq (80/53) (cho phép máy PC1 truy cập)
+ACL
+
+NAT (private -> public)
+
+PC1: 192.168.1.254 -> modem -> 113.170.3.10 (cơ chế NAT)
+
+access-list 1 permit 192.168.1.0 0.0.0.255
+ip nat inside source list 1 interface gi0/1 overload
+in gi0/0/0
+ip nat in
+int gi0/0/1
+ip nat out
+
+default route: ip route 0.0.0.0 0.0.0.0 116.113.114.0
+router rip
+default-infomation originate

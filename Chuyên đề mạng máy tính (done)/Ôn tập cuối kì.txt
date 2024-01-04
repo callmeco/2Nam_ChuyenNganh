@@ -1,0 +1,161 @@
+control plane: có chức năng định tuyến (routing protocol, AAA, SNMP, CLI)
+data plane: có chức năng truyền gói tập tin (ACLs)
+
+sdn controller: giải nghĩa quản lý các thiết bị đầu cuối như wifi
+
+cdp là giao thức các thiết bị hàng xóm
+ssh là giao thức điều khiển thiết bị từ xa và có bảo mật rất tốt
+telnet là giao thức điều khiển thiết bị từ xa nhưng bảo mật kém hơn
+
+Mô hình SDN gồm mấy phần:
+1. Hệ thống (Applications)
+2. SDN controller
+3. Physical topology
+
+Để thiết lập mô hình SDN kết nối thiết bị
+1. Thiết lập CDP trên các thiết bị đó (router, switch, AP)(show cdp neighbour
+2. Cấu hình SSH 
+3. Định tuyến các thiết bị kết nối SDN
+
+Phân biệt hai kĩ thuật NAT
+NAT: là chức năng cho phép chuyển đổi địa chỉ IP Private thành IP Public
+
+1. NAT trên interface: là cơ chế chuyển đổi địa chỉ IP nguồn sang địa chỉ nằm trên cổng out
+2. NAT pool: là cơ chế chuyển IP nguồn vào cái pool đã được cung cấp
+
+Tunnel là gì: là tạo ra đường kết nối logic để đóng gói tập tin để vận chuyển qua các router
+Điều gì sẽ xảy ra khi đi qua gói tin qua tunnel: là thiết lập một sợi dây mạng logic nối
+giữa hai router, khi mà gói tin nội bộ được gửi đi thì nó sẽ biến thành địa chỉ mạng đầu của tunnel
+để gửi tập tin qua đầu kia của tunnel vì có cùng địa chỉ mạng, phía đầu đích tunnel sẽ đổi lại IP
+ban đầu cho tập tin
+
+DHCP là gì: là giao thức cập địa chỉ IP động
+Hãy nêu cách thức cấu hình DHCP cho client lấy địa chỉ IP theo 2 cách đã học?
+1. cấu hình DHCP trên router (ip dhcp pool)
+2. cấu hình thông qua server (ip helper-address)
+
+Tại sao mô hình lại sử dụng RIPv2: vì nó là mạng không liên tục (mạng 172, mạng 10), cơ chể 
+chứng thực, hỗ trợ IPv6
+
+syslog là gì: ghi lại các trạng thái của router hệ thống (trong máy ngoài thì nó nằm ở Event Viewer)
+
+Làm sao để biết được IP của một server: dùng ping ip broadcast
+
+Nguyên nhân dẫn đến 1 tunnel bị down là gì: cấu hình sai, định tuyến hai đầu không thông
+
+Phải làm như nào để cho 1 PC có thể ping thông tới server Google: PC với GW phải cấu hình giao thức định tuyến, default route, default o, cấu hình NAT
+
+PC0 không lấy được địa chỉ DHCP Server tại sao?: chưa cấu hình IP helper-add, chưa định tuyến mạng tới server, chưa bật cấu hình DHCP trên Server
+
+Hãy nêu cách thức cấu hình dịch vụ AAA:
+1. cấu hình AAA trên từng router
+2. bật dịch vụ AAA service trên server
+nếu thực hiện không được: kiểm tra thông tin chứng thực trên server đã đúng chưa, định tuyến đúng chưa hay đã bật cấu hình AAA lên chưa
+AAA là dịch vụ cho phép thực hiện 3 quá trình: chứng thực, uỷ quyền, ghi chú
+
+Câu 2: mô tả mô hình
+1. IP
+2. Định tuyến
+3. Kích hoạt các dịch vụ
+
+Trên các router HCM-XXX, GW, DMZ-R:
+-	Hostname
+-	Gắn IP cho các cổng được nối
+-	Cấu hình định tuyến RIPv2
+-	Cấu hình SSH
+-	Cấu hình AAA
+-	Cấu hình Syslog
+-	Cấu hình NTP
+Trên Router HCM-Lan01, HCM-Lan02 và HCM03:
+-	Cấu hình DHCP để cung cấp mạng cho các PC và Wireless Router từ DHCP Server
+Trên Router GW:
+-	Cấu hình NAT trên interface
+-	Default route
+-	Default o
+Trên PC:
+-	Kết nối với Router để cung cấp mạng                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       dvddddddddddvd
+
+Cấu hình giao thức SSH
+hostname
+ip domain-name cdm.com
+crypto key generate rsa [Enter][512, 1024, 2048]
+IP ssh version 2 
+username user password 123
+line vty 0 4 (0 và 4 đối với router, 0 15 là switch)
+login local
+transport input ssh
+
+Cấu hình giao thức telnet
+enable secret cdm
+line vty 0 4
+password demo 
+login
+
+Định tuyến:
++ Tĩnh: ip route mạng_cần_tới subnetmask cổng_của_router_cần_đi_qua
++ Động: 
+ro ri
+net mạng
+ver 2
+no au
+
+Gán IP động:
+ip dhcp pool <ten>
+network mạng_bên_cạnh subnet_mask
+default-router ip_router
+dns-server 8.8.8.8
+
+Khi không muốn dùng 10 địa chỉ đầu cấp cho máy tính
+ip dhcp excluded-address 172.16.3.1 172.16.3.10
+
+ip helper-address địa_chỉ_mạng_của_DHCPServer
+
+wildcard mask: ngược lại với subnet mask (255.255.255.0 -> 0.0.0.255)
+
+default route: 
+ip route 0.0.0.0 0.0.0.0 địa_chỉ_mạng
+router rip
+default-infomation originate
+
+Hướng dẫn cấu hình NAT trên Interface
+access-list 1 permit any
+ip nat inside source list 1 interface s0/1/0 overload (interface s0/1/0 là cổng nối ra internet)
+intface gi0/0/0
+ip nat inside 
+interfaec s0/1/0
+ip nat outside
+
+Hướng dẫn cấu hình NAT trên Pool
+access-list 1 permit any
+ip nat pool NAT 209.165.200.1 209.165.200.10 netmask 255.255.255.224 (ip nat pool NAT vùng mạng netmask subnetmask)
+ip nat inside source list 1 pool NAT overload
+intface gi0/0/0
+ip nat inside 
+interfaec s0/1/0
+ip nat outside
+
+Hướng dẫn cấu hình Syslog Sever 
+logging trap debugging
+logging ip_syslogServer
+login on-success log 
+login on-failure log
+
+Hướng dẫn cấu hình hệ thống AAA
+enable secret cisco
+ip domain-name cisco.com
+crypto key generate rsa
+1024
+aaa new-model
+
+aaa authentication login default group tacacs+ none 
+aaa authentication login telnet_lines group tacacs+ 
+aaa accounting exec default start-stop group tacacs+
+tacacs-server host ip_AAAServer key ciscosecret
+
+line vty 0 4
+logging synchronous
+login authentication telnet_lines
+
+Hướng dẫn cấu hình NTP Server 
+ntp server ip_NTPServer
+ntp update-calendar

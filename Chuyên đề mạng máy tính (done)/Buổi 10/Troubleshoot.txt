@@ -1,0 +1,7 @@
+chưa nhập IP cho PC
+router rip ver 1
+chưa router rip Gateway
+server DNS, FTP sai default gateway
+chưa cấu hình NAT
+permit nhầm lap
+sai ip route ISP
