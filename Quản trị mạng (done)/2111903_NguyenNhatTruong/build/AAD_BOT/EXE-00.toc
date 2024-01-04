@@ -1,0 +1,116 @@
+('D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT Nhỏ\\dist\\AAD_BOT.exe',
+ True,
+ False,
+ False,
+ ['D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT Nhỏ\\DLULogo.ico'],
+ None,
+ False,
+ False,
+ b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<assembly xmlns='
+ b'"urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">\n  <trustInfo x'
+ b'mlns="urn:schemas-microsoft-com:asm.v3">\n    <security>\n      <requested'
+ b'Privileges>\n        <requestedExecutionLevel level="asInvoker" uiAccess='
+ b'"false"/>\n      </requestedPrivileges>\n    </security>\n  </trustInfo>\n  '
+ b'<compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">\n    <'
+ b'application>\n      <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f'
+ b'0}"/>\n      <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>\n '
+ b'     <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"/>\n      <s'
+ b'upportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>\n      <supporte'
+ b'dOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>\n    </application>\n  <'
+ b'/compatibility>\n  <application xmlns="urn:schemas-microsoft-com:asm.v3">'
+ b'\n    <windowsSettings>\n      <longPathAware xmlns="http://schemas.micros'
+ b'oft.com/SMI/2016/WindowsSettings">true</longPathAware>\n    </windowsSett'
+ b'ings>\n  </application>\n  <dependency>\n    <dependentAssembly>\n      <ass'
+ b'emblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version='
+ b'"6.0.0.0" processorArchitecture="*" publicKeyToken="6595b64144ccf1df" langua'
+ b'ge="*"/>\n    </dependentAssembly>\n  </dependency>\n</assembly>',
+ True,
+ False,
+ None,
+ None,
+ None,
+ 'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+ 'Nhỏ\\build\\AAD_BOT\\AAD_BOT.pkg',
+ [('pyi-contents-directory _internal', '', 'OPTION'),
+  ('PYZ-00.pyz',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+   'Nhỏ\\build\\AAD_BOT\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+   'Nhỏ\\build\\AAD_BOT\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+   'Nhỏ\\build\\AAD_BOT\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+   'Nhỏ\\build\\AAD_BOT\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+   'Nhỏ\\build\\AAD_BOT\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+   'Nhỏ\\build\\AAD_BOT\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'D:\\Python\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'D:\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'D:\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'D:\\Python\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_pywintypes',
+   'D:\\Python\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\hooks\\rthooks\\pyi_rth_pywintypes.py',
+   'PYSOURCE'),
+  ('AAD_BOT',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT Nhỏ\\AAD_BOT.py',
+   'PYSOURCE'),
+  ('python311.dll', 'D:\\Python\\python311.dll', 'BINARY'),
+  ('pywin32_system32\\pywintypes311.dll',
+   'D:\\Python\\Lib\\site-packages\\pywin32_system32\\pywintypes311.dll',
+   'BINARY'),
+  ('_decimal.pyd', 'D:\\Python\\DLLs\\_decimal.pyd', 'EXTENSION'),
+  ('_hashlib.pyd', 'D:\\Python\\DLLs\\_hashlib.pyd', 'EXTENSION'),
+  ('_lzma.pyd', 'D:\\Python\\DLLs\\_lzma.pyd', 'EXTENSION'),
+  ('_bz2.pyd', 'D:\\Python\\DLLs\\_bz2.pyd', 'EXTENSION'),
+  ('unicodedata.pyd', 'D:\\Python\\DLLs\\unicodedata.pyd', 'EXTENSION'),
+  ('select.pyd', 'D:\\Python\\DLLs\\select.pyd', 'EXTENSION'),
+  ('_socket.pyd', 'D:\\Python\\DLLs\\_socket.pyd', 'EXTENSION'),
+  ('pyexpat.pyd', 'D:\\Python\\DLLs\\pyexpat.pyd', 'EXTENSION'),
+  ('_ssl.pyd', 'D:\\Python\\DLLs\\_ssl.pyd', 'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'D:\\Python\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('_ctypes.pyd', 'D:\\Python\\DLLs\\_ctypes.pyd', 'EXTENSION'),
+  ('_queue.pyd', 'D:\\Python\\DLLs\\_queue.pyd', 'EXTENSION'),
+  ('_overlapped.pyd', 'D:\\Python\\DLLs\\_overlapped.pyd', 'EXTENSION'),
+  ('_asyncio.pyd', 'D:\\Python\\DLLs\\_asyncio.pyd', 'EXTENSION'),
+  ('win32\\_win32sysloader.pyd',
+   'D:\\Python\\Lib\\site-packages\\win32\\_win32sysloader.pyd',
+   'EXTENSION'),
+  ('VCRUNTIME140.dll', 'D:\\Python\\VCRUNTIME140.dll', 'BINARY'),
+  ('VCRUNTIME140_1.dll', 'D:\\Python\\VCRUNTIME140_1.dll', 'BINARY'),
+  ('libcrypto-1_1.dll', 'D:\\Python\\DLLs\\libcrypto-1_1.dll', 'BINARY'),
+  ('libssl-1_1.dll', 'D:\\Python\\DLLs\\libssl-1_1.dll', 'BINARY'),
+  ('libffi-8.dll', 'D:\\Python\\DLLs\\libffi-8.dll', 'BINARY'),
+  ('base_library.zip',
+   'D:\\Đại Học Học Cũng Nhàn ;-;\\Quản trị mạng\\BT '
+   'Nhỏ\\build\\AAD_BOT\\base_library.zip',
+   'DATA')],
+ [],
+ False,
+ False,
+ 1696293340,
+ [('run.exe',
+   'D:\\Python\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
+   'EXECUTABLE')],
+ 'D:\\Python\\python311.dll')

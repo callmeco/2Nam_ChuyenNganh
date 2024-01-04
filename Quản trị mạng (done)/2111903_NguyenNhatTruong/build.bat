@@ -1,0 +1,1 @@
+pyinstaller AAD_BOT.py --onefile --icon=DLULogo.ico

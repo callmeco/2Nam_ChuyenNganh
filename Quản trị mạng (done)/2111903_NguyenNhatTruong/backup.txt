@@ -1,0 +1,81 @@
+while True:
+    print("Nhấn 0: Thoát chương trình")
+    print("Nhấn 1: Tạo User")
+    print("Nhấn 2: Đổi mật khẩu User")
+    print("Nhấn 3: Tạo profile và homedir cho User")
+    print("Nhấn 4: Xoá User")
+    print("Nhấn 5: Cài dịch vụ Web cho Server")
+    print("Nhấn 6: Cài dịch vụ Telnet cho Server")
+    print("Nhấn 7: Đọc file CSV")
+    print("Nhấn 8: Tạo OU từ file CSV")
+    print("Nhấn 9: Tạo User từ CSV")
+    print("Nhấn 10: Tạo profile cho User ở câu 9")
+    print("Nhấn 11: Đổi mật khẩu cho các User ở câu 9 thành QTM2023@")
+    print("Nhấn 12: Cho phép User quyền remote desktop")
+    print("Nhấn 13: Copy file .txt từ thư mục nguồn sang thư mục đích")
+    print("Nhấn 14: Deploy phần mềm Foxi Reader.msi")
+    print("Nhấn 15: Cài đặt Website bằng IIS")
+    print("Nhấn 16: **Tạo OU cha**")
+    print("Nhấn 17: Kiểm tra OU")
+    pick = int(input("Nhap lua chon cua ban: "))    
+    if pick ==1:
+        username = input('Nhap ten user: ')
+        password = input("Nhap mat khau: ")
+        ou = input("Nhap OU: ")
+        createUsers_withOU(username,password,ou)
+    elif pick == 2:
+        username = input("Nhap username: ")
+        newpassword = input("Nhap mat khau moi: ")
+        ou = input("Nhap OU: ")
+        changePassword(username,newpassword,ou)
+    elif pick == 3:
+        username = input("Nhap username: ")
+        ou = input("Nhap OU: ")
+        createProfile_Homedir(username,ou)
+    elif pick == 4:
+        username = input("Nhap user can xoa: ")
+        ou = input("Nhap OU: ")
+        deleteUser(username, ou)
+    elif pick == 5:
+        installWebService()
+    elif pick == 6:
+        installTelnetService()
+    elif pick == 7:
+        file = input("Nhập file CSV cần mở: ")
+        readCSV(file)
+    elif pick == 8:
+        file = input("Nhập file CSV cần mở: ")
+        createOU_fromCSV(file)
+    elif pick == 9:
+        file = input("Nhập file CSV cần mở: ")
+        createUser_fromCSV(file)
+    elif pick == 10:
+        file = input("Nhập file CSV cần mở: ")
+        createProfile_fromUser(file)
+    elif pick == 11:
+        file = input("Nhập file CSV cần mở: ")
+        pwd = input("Nhập mật khẩu mới: ")
+        createNewPassword(file,pwd)
+    elif pick == 12:
+        username = input("Nhập username cần cấp quyền: ")
+        remoteDesktop(username)
+    elif pick == 13:
+        source = input("Nhập đường dẫn thư mục nguồn: ")
+        dest = input("Nhập đường dẫn thư mục đích: ")
+        copyFile(source,dest)
+    elif pick == 14:
+        source = input("Nhập đường dẫn tới thư mục Foxi Reader.msi: ")
+        dest = input("Nhập đường dẫn để cài đặt: ")
+        deployFoxiReader(source,dest)
+    elif pick == 15:
+        name = "mywebsite"
+        root = "/path/to/website"
+        deployWebsite(name,root)
+    elif pick == 16:
+        ou = input("Nhập OU cha cần tạo: ")
+        createParentOU(ou)
+    elif pick == 17:
+        ou = input("Nhập OU cần kiểm tra: ")
+        checkOU(ou)
+    else:
+        close()
