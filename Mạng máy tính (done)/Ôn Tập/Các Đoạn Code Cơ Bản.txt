@@ -1,0 +1,137 @@
+Num ofAddr	Num ofBits	Prefix	Mask
+1		0		/32	.255
+2		1		/31	.254
+4		2		/30	.252
+8		3		/29	.248
+16		4		/28	.240
+32		5		/27	.224
+61		6		/26	.192
+128		7		/25	.128
+
+Đặt tên cho Switch
+conf t
+hostname S1
+exit
+
+Cấu hình bảo vệ cho console
+conf t
+line console 0
+password mmt
+login
+exit
+
+Bảo vệ truy cập
+conf t
+enable password mmt
+exit
+
+Kiểm tra mật khẩu bảo về
+#show run
+
+Mật khẩu mã hoá
+conf t
+enable secret mmt
+exit
+
+Mã hoá enable và console
+conf t
+service password-encryption
+exit
+
+Cấu hình banner motd
+conf t
+# banner motd " "
+exit
+
+
+HOẶC CÓ THỂ THAM KHẢO THÊM
+1. Ban đầu vào cấu hình
+Router> enable
+Router#
+Router# disable
+Router>
+Router> ?
+Router# ?
+Router#show version
+Router>show version
+Router# show running-config
+Router# show startup-config
+Router#show flash:
+Router# dir nvram:
+Router#configure terminal
+Router#conf
+
+2.Cấu hình cổng – Interface
+R1(config)#interface fastEthernet 0/0
+R1(config)#int f0/0
+R1(config-if)#ip address 192.168.1.1 255.255.255.0
+R1(config-if)#no shutdown
+R1(config-if)#description To R2
+R1(config-if)#exit | end | Ctrl+Z
+R1#show run
+R1#show ip interface brief  //xem thông tin tóm tắt
+R1#show interface f0/0|f0/1 …]  // xem thông tin chi tiết
+R1(config)#do show ip interface brief
+R1(config)#do show interface f0/0|f0/1 …]
+R1# ping 192.168.1.2
+R1(config)# do ping 192.168.1.2
+interface Serial0/0/0
+description Connect to R4
+ip address 1.1.1.1 255.255.255.0
+clock rate 128000
+no shutdown
+exit
+interface Loopback0
+description To Internet
+ip address 10.0.0.2 255.255.255.0
+
+4. Cấu hình Mật khẩu
+4.1 console password
+(config)# line con 0
+password cisco
+login
+Router#exit
+4.2. Enable password
+R1(config)#enable password class //clear text
+R1(config)#enable secret ccna // encrypted by MD5
+R1#show running-config
+R1#disable
+R1>enable
+4.3.VTY password (for Telnet service)
+R2(config)#line vty 0 4
+password cisco
+login
+R1# 192.168.1.2
+R1#telnet 192.168.1.2
+R1#connect 192.168.1.2
+R2# exit  //ngắt phiên Telnet, về R1
+R2# Ctrl+Shift+6   //tạm thời quay về R1, nếu Enter thì lại chuyển đến R2
+R2(config)#service password-encryption
+
+Cục router trung tâm quản lý (central)
+ena
+conf t
+interface gi0/0/0
+ip add
+no shutdown
+exit
+interface se0/0/0
+ip add
+no shutdown
+exit
+
+
+Cục router (R1, R2, R3, R4)
+ena
+conf t
+line console mmt
+password mmt
+exit
+enable secret mmt
+ip domain-name mmt.com
+hosname R1
+crypto key generate rsa
+username mmt password mmt
+line vty 0 4
+login local
+transport input ssh
