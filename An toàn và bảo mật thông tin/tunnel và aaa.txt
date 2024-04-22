@@ -1,0 +1,46 @@
+Để ipv6 chạy được thì ipv4 phải chạy được
+Các router phải định tuyến RIP
+Gán IPv6:
+int tunnel 1
+tunnel source s0/1/0
+tunnel dest 192.168.3.2
+ipv6 address 2022::1/64
+ipv6 unicast-routing
+tunnel mode ipv6ip
+
+int tunnel 1
+tunnel source s0/1/0
+tunnel dest 192.168.2.1
+ipv6 address 2022::2/64
+ipv6 unicast-routing
+tunnel mode ipv6ip
+
+Để làm cho default gateway ngắn hơn: ipv6 address fe80::1 link-local
+
+Định tuyến tĩnh
+ipv6 route 2023::/64 2022::2
+ipv6 route 2024::/64 2022::1
+
+Định tuyến động
+ipv6 router rip TEN 
+int tunnel 1
+ipv6 rip TEN enable
+---------------------------------------
+username __ algorithm-type scrypt secret __ (username __ password __)
+aaa new-model
+aaa authentication login default lacal-case enable
+aaa authentication login SSH-LOGIN local-case
+line vty 0 4
+login authentication SSH-LOGIN
+---------------------------------------
+aaa new-model
+aaa authentication login default group tacacs+ none
+aaa aithentication login telnet_lines group tacacs+
+
+aaa accounting exec default start-stop group tacacs+
+tacacs-server host IP key finalexam2023
+
+line vty 0 4
+logging sync
+login authentication telnet_lines
+----------------------------------------

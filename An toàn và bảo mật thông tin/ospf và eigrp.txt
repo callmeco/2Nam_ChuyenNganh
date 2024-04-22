@@ -1,0 +1,5 @@
+router ospf (số theo đề bài)
+network (mạng bên cạnh) (wildcard) area 0
+
+router eigrp (số theo đề bài)
+network (mạng bên cạnh) (wildcard nếu có)

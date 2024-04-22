@@ -1,0 +1,15 @@
+license boot module c1900 technology-package securityk9
+yes
+cryp isakmp policy 10
+authentication pre-share
+encryption 3des
+group 5
+lifetime 86400
+crypto ipsec transform-set VPN-SET esp-3des esp-sha-hmac
+crypto isakmp key cisco address 192.168.5.2 (ip đầu kia)
+crypto map VPN-MAP 10 ipsec-isakmp
+set peer 192.168.5.2 (ip đầu kia)
+set transform-set VPN-SET
+match address 100
+access-list 100 permit ip host 192.168.100.254 (ip thiết bị đầu) host 172.16.10.254 (ip thiết bị cuối)
+ 

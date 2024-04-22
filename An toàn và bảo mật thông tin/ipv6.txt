@@ -1,0 +1,5 @@
+ipv6 unicast-routing
+interface f0/0
+ipv6 enable
+ipv6 address 2001::1/64
+no shutdown
