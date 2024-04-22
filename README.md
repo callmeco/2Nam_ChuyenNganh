@@ -1,1 +1,1 @@
-# linh-tinh-things
+Vài thứ nhức nhức cái đầu 🤯
