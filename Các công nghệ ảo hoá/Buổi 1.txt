@@ -1,0 +1,112 @@
+hypervisor(lớp đệm ảo hóa) dùng phần cững tạo ra một máy ảo
+
+
+Có 2 loại hyoervisor
+type 1 tương tác trực tiếp với máy thật, tạo lớp đệm tốt (ram, không bị treo) Vmware vSphere/ESXi (lab) trả phí rất cao, hyperV, Citrix XenServer(bost room)(cung cấp ảo hóa cho môi trường produx),redHat enterprise vitualization, promox(KVM, kernel-based vitual machine giống vm nhưng free nhưng cần biết sử dụng linux
+type 2  Phải thông qua một Os : vmware, vitualbox, Vemu(KVM), Paralel... không sử dụng trong môi trường product vì jgu tắt nó tắt hết không khỏi động lại
+
+
+VM files:
+- log file :  .log
+- disk file: .vmdk
+- snapshot files: .vmsn
+- configuaration file : .vmx
+
+snapshot: lưu lại trạng thái máy ảo. Không nên snap quá nhiều--> nó phân nhanh ổ đĩa ra nhiều--> giảm performent của hệ thống nên 5 - 6 snapshots tôi. Trên product 
+
+DC ( Data center)
+Xử lý số lượng lớn về data
+Gồm tủ Rack chứa máy chủ và một số thiết bị mạng
+
+Gồm 3 thành phần chính
+- compute: Điện toán
+- Starage: Lưu trữ
+- Networks: mạng
+
+Compute systems dịch vụ điện toán
+ Để chạy dịch vụ địch toán ta cần server:
+	- Tower: Sever dạng đứng hình dạng nư thùng pc ( phòng sever)
+	- Blade server: 1 con bự cứ cắm vô 
+	- Rack-mounted: server nằm (dạng chuẩn)
+Networks:
+ Có 3 dạng networks:
+	- Bridge
+	- Nat
+	- Host only
+Storage - RAID: gom nhiều ổ cứng thành 1 ổ tập chung, nếu có 2 hoặc 3 ổ cứng dữ liệu bị mất thì cắm 1 ổ khác vào dữ liệu đc khôi phục
+Đọc raid 0,1,5,6,10 khác nhau những gì
+Raid 1: đồng bộ 
+raid 0: đọc ghi tốc độ gấp đôi nhưng khi 1 ổ cứng chết thì cả hệ thống chết
+thường dùng sẽ là raid 5 & raid 10 thì tổng dữ liệu bị xuống do có nhiều cách backup
+Raid
+azure s3 lưu thành block - ceph (lưu trữ back up không đọc ghi nhiều)
+ceph - NAS->NTFS lưu dạng cấu trúc cây thư mục( lưu dang dữ liệu đọc ghi nhiều SQL,lms,...)
+
+Starage - Type
+ - DAS Direc astrect storage lưu trữ bản thân trên con server nó luôn ( tốc độ cao, triển khai không quá phức tạp - tồn tại trên bản thân nó, khó có khả năng mở nộng, di chuyển từ host này sang host khác khó)
+ - NAS Network access storage là thiết bị lưu trữ tập trung, mọi thứ đề thông qua network dựa vào window dựa vào sysnology
+ - SAN có kiến trúc tập trunggần như là 1 thiết bị nat mà ko qua thông qua switch thường mà nó thông ra FC thông qua switch fc cung cấp tốc độ đọc ghi cực kì cao
+fc là công nghệ riêng không chạy trên công nghệ truyền thống.\
+Tất cả ổ cứng ngoài usb đều là DAS
+SCSI là DAS là 1 chuẩn liên kết để dọc data
+FC(Fiber Channel) & FCoE(FC over Ethernet) dùng cho thiết bị SAN switch không rẻ
+nên dùng swtich vs San
+iSCSI(Internet Small Computer System Interface) của Nas minimum 1gb thường thì 2 3 trục bây giờ đa số 10
+
+Thick provisioning: Tạo máy ảo 100Gb thì 100bg bị chiếm luôn
+Thin: Tạo 100Gb thì máy ảo xài bao nhiêu lấy bấy nhiêu
+Data base không nên để thin
+
+Virtual Data Center:
+Có nhiều hardware
+
+AWS: azure,google clound, aws
+
+
+vSphere(EsXi VMW) giúp ảo hóa quản lí cho hệ thông enterprise lớn
+vSphere: học online 2 tháng 8tr
+	- ESXi: type 1 hyperviser
+	- vCenter: máy ảo quản lí nhiều ESXi
+	- vPhere Client: bộ công cụ giúp người quản trị
+có những cụm server
+ toàn bộ dữ liệu sẽ đc lưu trong Fc hoăc ISCSI or NAS
+
+làm việc qua giao diện web vs ESXi, và vSphere
+
+vSphere client -> vCenter -> vCenter and vSphere Client
+
+Server Vitualization
+Storage Vitualization dùng iSCSI lên
+
+Cloud computing Điện toán đám mây
+Nhà cung cấp dịch cho thuê là clound computing
+
+Type:
++ Software as a Serviec
+
+
+on premise tự cung cấp bởi người quản trị 
++ Chi phí cao 
++ khả năng mở rộng thấp
++ cần nơi lưu trữ lơn để đặt server
++ Cần team để quản trị hệ thống
++ Bảo mật yếu
++ Less chance of data recovery
++ lach of linh hoạt
++ no automatic updates
++ less collaboration
++ Data cannot be accessed remotely
++ tốn tg triển khai
+cloud computing
++ Pay as you go | pay for what you use
+  - Scale up = paymore mở rộng
+  - Scale down = payless
++ Có đủ tiền để trả hay ko
++ Cần gì kêu bên thuê làm
++ Có đội chuyên về bảo mật
++ Disater recovery
++ high flexibility
++ auto software updates
++ Tính làm việc nhóm
++ can be access from anywhere
++ triển can có thẻ ngay lập tức
