@@ -1,0 +1,50 @@
+
+vlan 100
+name 
+int vlan 100
+ip add
+
+vtp mode server -> tạo VTP Server
+vtp domain ITDLU
+vtp pass 
+
+vtp mode client
+vtp domain ITDLU
+vtp pass 
+
+int r f0/21-24
+sw mode trunk
+sw trunk native vlan 
+
+int r 
+spanning-tree portfast
+sw mode acc
+sw acc vlan 100
+
+
+dhcp
+ip dhcp pool NhanSu
+net 192.168.100.0 255.255.255.0
+default-router 192.168.100.254
+dns 8.8.8.8
+
+L2-Switch:	vlan 10
+		name
+		vlan 20
+		name
+		int fa0/
+		sw mode acc
+		sw acc vlan 10
+		int fa0/
+		sw mode acc
+		sw acc vlan 20
+		int fa0/
+		sw mode trunk
+		sw trunk encapsulation dot1q
+
+L3-Switch:	int vlan10
+		ip add
+		no sh
+		int vlan20
+		ip add
+		no sh
