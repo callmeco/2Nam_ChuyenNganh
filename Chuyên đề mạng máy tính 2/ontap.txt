@@ -1,0 +1,76 @@
+Configure Vlans and Trunking
+ena
+conf t
+hostname S2
+enable secret class
+line console 0
+password cisco
+login
+exit
+line vty 0 15
+password cisco
+login
+exit
+service password-encryption
+banner motd $Unauthorized Access is Prohibited!$
+int vlan 1
+ip add 192.168.1.12 255.255.255.0
+no sh
+exit
+exit
+clock set 00:00:00 18 October 2024
+copy running-config startup-config
+
+Create Vlans
+vlan 10
+name Operations
+vlan 20
+name Parking_Lot
+vlan 99
+name Management
+vlan 1000
+name Native
+end
+
+Assign VLAN to a interface
+int f0/6
+switchport mode access
+switchport access vlan 10
+int vlan 1
+no ip add
+int vlan 99
+ip add 192.168.1.11 255.255.255.0
+end
+show vlan brief
+
+Assign VLAN to multiple interfaces
+int range f0/11-24
+switchport mode access
+switchport access vlan 99
+end
+
+Configure trunk interface f0/1
+int f0/1
+switchport mode trunk
+switchport trunk native vlan 1000
+switchport trunk allowed vlan 10,20,30,1000
+
+Disable DNS lookup
+no ip domain-lookup
+
+Configure IPv6 and IPv4 for routers
+ipv6 unicast-routing
+int g0/0/0
+ip add 172.16.1.1 255.255.255.0
+ipv6 address fe80::1 link-local
+ipv6 address 2001:db8:acad:2::1/64
+no sh
+int lo1
+ip address 10.1.0.1 255.255.255.0
+ipv6 address fe80::1 link-local
+ipv6 adress 2001:db8:acad:10::1/64
+no sh
+
+Default rounting for IPv4
+ip route 10.2.0.0 255.255.255.0 192.168.1.2
+ip route 0.0.0.0 0.0.0.0 172.16.1.2

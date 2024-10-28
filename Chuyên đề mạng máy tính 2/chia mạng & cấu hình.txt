@@ -1,0 +1,152 @@
+10.0.0.0/8
+00001010.|00000000.00000000.00000000
+
+500
+2^9-2>=500
+32-8-9=15
+mượn 15 bit
+10.|00000000.0000000|0.00000000
+2^15=32768 mạng con
+subnet: 32-9=23
+10.0.0.0/23 -> mạng của 500 host
+10.0.2.0/23 -> mạng của 300 host
+2^7-2>=100
+32-7=25
+10.0.4.0/25 -> mạng của 100 host
+
+
+500 host 
+10.0.0.0/23
+2^9-2=510
+địa chỉ hữu dụng: 10.0.0.1/23 -> 10.0.1.254/23 (510 địa chỉ)
+
+300 host
+10.0.2.0/23
+2^9-2=510
+địa chỉ hữu dụng: 10.0.2.1/23 -> 10.0.3.254/23 (510 địa chỉ)
+
+100 host
+10.0.4.0/25 
+2^7-2=126
+địa chỉ hữu dụng: 10.0.4.1/25 -> 10.0.4.126/25 (128 địa chỉ)
+
+
+----R1
+ena
+conf t
+hostname R1
+enable secret admin123
+username admin password admin123
+line vty 0 4
+login local
+transport input ssh
+exit
+ip ssh version 2
+ip domain-name ctk45mmt
+crypto key generate rsa
+1024
+
+int g0/0/0
+no sh
+int g0/0/0.10
+encapsulation dot1q 10
+ip address 10.0.0.1 255.255.254.0
+int g0/0/0.20
+encapsulation dot1q 20
+ip address 10.0.2.1 255.255.254.0
+int g0/0/0.30
+encapsulation dot1q 30
+ip address 10.0.4.1 255.255.255.128
+
+--S1
+ena
+conf t
+hostname S1
+vlan 10
+vlan 20
+vlan 30
+int f0/23
+switchport mode access
+switchport access vlan 10
+int f0/24
+switchport mode access
+switchport access vlan 20
+int g0/1
+switchport mode trunk
+
+--S2
+ena
+conf t
+hostname S2
+vlan 10
+vlan 20
+vlan 30
+int f0/23
+switchport mode access
+switchport access vlan 30
+int range f0/1-2
+switchport mode trunk
+
+-----------------------------------
+
+- Prometheus được dùng để giám sát hệ thống thông qua các deamon được cài sẵn trên các
+node, qua đó thu thập những thông tin cần thiết. Prometheus giao tiếp với các node 
+thông qua giao thức http/https và lưu trữ data theo dạng time-series database.
+- Grafana là một ảo hóa hiển thị các metric dưới dạng biểu đồ hoặc đồ thị, được tập hợp 
+lại thành dashboard có tính tùy biến cao, giúp dễ dàng theo dõi tình trạng của node. Có 
+thể được hiểu là sau khi lấy được metric từ các thiết bị, grafana sẽ dùng metric đó 
+ phân tích và tạo ra dashboard mô tả trực quan các metric cần thiết cho việc quản lý như
+ CPU, RAM, disks, IO.
+- Để có thể thu thập metrics từ nhiều máy khác nhau, ta cần phải cài Node Exporter lên những máy đó. 
+Nhiệm vụ của node exporter là thu thập các metrics cục bộ và tạo ra một API để Prometheus có thể lấy những
+metrics đó về.
+- Blackbox exporter cho phép gọi tới các endpoint thông qua giao thức http, https, dns, tcp và
+ icmp.
+
+rule_file: là mảng chứa thông tin là đường dẫn tới các điều kiện gửi cảnh báo của Alert Manager.
+alering: định nghĩa cấu hình của instance Alert Manager.
+scrape_configs: blackbox sẽ trả lại các metric liên quan tới website.
+scrape_configs.*.static_config: chứa các Url cần theo dõi.
+scrape_configs.*.metrics_path: endpoint mà blackbox trả về metrics.
+scrape_configs.*.params.module: đây là module của blackbox.
+scrape_configs.*.ralabel_config: định nghĩa cho Prometheus viết lại các nhãn trước khi tải metric
+ từ blackbox về.
+
+modules: định nghĩa danh sách modules mà blackbox sử dụng.
+http_2xx: tên của module.
+modules.<tên module>.http: cấu hình cho giao thức module này sử dụng. Với giao thức http 
+ta có thể cấu hình method, điều kiện fail khi target không có ssl, ...
+modules.<tên module>.prober: prober thực thi việc thăm dò.
+modules.<tên module>.timeout: thời gian timeout của mỗi lần thăm dò.
+
+- Ansible là một công cụ phần mềm cung cấp khả năng tự động hóa hỗ trợ máy tính 
+đa nền tảng đơn giản nhưng mạnh mẽ. Được dùng bởi các chuyên gia CNTT, người dùng 
+để triển khai ứng dụng, cập nhật trên máy trạm và server, cung cấp đám mây, quản 
+lý cấu hình và gần như bất cứ việc mà người quản trị viên hệ thống làm hằng ngày. 
+Ansible không phụ thuộc vào phần mềm và không có cơ sở hạ tầng bảo mật nên rất dễ 
+triển khai.
+
+Ansible sử dụng OpenSSH để đăng nhập và truyền tệp từ xa. Ansible dùng YAML playbook 
+giúp cung cấp chi tiết về các tác vụ tự động hóa. Playbook cho phép lập trình các tác vụ 
+lặp đi lặc lại tự động mà không cần phải học ngôn ngữ lập trình cao. Các playbook được 
+thực hiện trên một hoặc một nhóm máy chủ tạo nên kho lưu trữ Ansible. 
+
+Ansible đẩy các code thông qua các module trên các node được quản lý. Sau đó, thực thi 
+module đó qua SSH và xóa module đso khi hoàn tất.
+
+- Các thuật ngữ
+ansible server: là nơi ansible được cài đặt và từ đó tất cả các tasks và playbooks sẽ được chạy.
+module: là một lệnh hoặc tập hợp các lệnh tương tự được thực thi ở client-server. Việc giao tiếp 
+với Ansible sẽ thông qua module.
+task: được xác định công việc đơn lẻ được hoàn thành, là những công việc nhỏ trong playbook.
+role: một tập hợp các playbook, các file liên quan được tổ chức theo cách được xác định trước để tạo 
+điều khiện tái sử dụng và chia sẻ.
+fact: các biến toàn cục chứa các thông tin về hệ thống.
+playbook: một file YAML chứa một tập các công việc cần tự động hóa.
+inventory: một file INI chứa các thông tin về các server từ xa mà bạn quản lý.
+play: một lần thực thi một playbook.
+handler: sử dụng để kích hoạt thay đổi trạng thái các service.
+tag: tên được đặt cho một task, có thể được sử dụng sau này có nhiệm vụ chỉ cụ thể một hoặc một nhóm task.
+
+- Netmiko là một thư viện Python dùng để lập trình hoặc tự động hóa. Nó đơn giản hóa 
+việc kết nối, cấu hình và truy xuất các thiết bị mạng thông qua giao thức SSH (cisco, ...).

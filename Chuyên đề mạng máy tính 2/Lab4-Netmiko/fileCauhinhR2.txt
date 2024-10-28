@@ -1,0 +1,143 @@
+Building configuration...
+
+  
+Current configuration : 1334 bytes
+!
+! Last configuration change at 17:25:57 UTC Sat Oct 12 2024
+!
+version 15.7
+service config
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable password 123
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username cisco password 0 123
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1
+ description LOOPBACK1
+ ip address 1.1.1.1 255.255.255.0
+!
+interface Loopback2
+ description LOOPBACK2
+ ip address 2.2.2.2 255.255.255.0
+!
+interface Loopback3
+ description LOOPBACK3
+ ip address 3.3.3.3 255.255.255.0
+!
+interface Ethernet0/0
+ ip address dhcp
+ duplex auto
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+ duplex auto
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+!
+ntp server 125.235.4.59
+ntp server pool.ntp.org
+!
+end
